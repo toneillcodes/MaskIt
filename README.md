@@ -1,0 +1,2 @@
+# MaskIt
+Pluggable masking framework
