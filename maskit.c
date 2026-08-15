@@ -23,12 +23,6 @@ mask_algo_t *mask_find(const char *name)
     return NULL;
 }
 
-void mask_list(void)
-{
-    for (size_t i = 0; i < mask_table_count; i++)
-        printf("%s\n", mask_table[i]->name);
-}
-
 /* ---------------- Dispatcher ---------------- */
 
 bool mask_execute(mask_entry_t *entry)
@@ -45,4 +39,12 @@ bool unmask_execute(mask_entry_t *entry)
         return false;
 
     return entry->algo->unmask(entry->buffer, entry->size, entry->ctx);
+}
+
+
+// Optional, only used for troubleshooting/debugging
+void mask_list(void)
+{
+    for (size_t i = 0; i < mask_table_count; i++)
+        printf("%s\n", mask_table[i]->name);
 }

@@ -1,4 +1,4 @@
-// compilation: cl.exe main.c maskit.c masking_functions.c /Fe:maskit.exe
+// compilation: cl.exe main.c maskit.c masking_functions.c uitls.c /Fe:maskit.exe
 #include "maskit.h"
 
 bool enable_debug = false;

@@ -3,6 +3,8 @@
 #include <stddef.h>
 #include <stdbool.h>
 #include <string.h>
+
+// Optional, only used for troubleshooting/debugging
 #include <stdio.h>
 
 typedef struct mask_algo {
