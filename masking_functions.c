@@ -117,3 +117,49 @@ mask_algo_t ADDSUB_ALGO = {
     .mask   = add_mask,
     .unmask = sub_unmask
 };
+
+// Gemini Pro Skill Generated
+// IMPLEMENTATION
+bool multilayer_bitwise_mask(uint8_t *buffer, size_t size, void *ctx)
+{
+    uint8_t key = *(uint8_t*)ctx;
+    
+    for (size_t i = 0; i < size; i++)
+    {
+        // Layer 1: XOR with key
+        uint8_t val = buffer[i] ^ key;
+        
+        // Layer 2: Bitwise NOT
+        val = ~val;
+        
+        // Layer 3: Swap nibbles
+        buffer[i] = (uint8_t)(((val & 0x0F) << 4) | ((val & 0xF0) >> 4));
+    }
+    
+    return true;
+}
+
+bool multilayer_bitwise_unmask(uint8_t *buffer, size_t size, void *ctx)
+{
+    uint8_t key = *(uint8_t*)ctx;
+    
+    for (size_t i = 0; i < size; i++)
+    {
+        // Reverse Layer 3: Swap nibbles (swapping again restores original)
+        uint8_t val = (uint8_t)(((buffer[i] & 0x0F) << 4) | ((buffer[i] & 0xF0) >> 4));
+        
+        // Reverse Layer 2: Bitwise NOT
+        val = ~val;
+        
+        // Reverse Layer 1: XOR with key
+        buffer[i] = val ^ key;
+    }
+    
+    return true;
+}
+
+mask_algo_t MULTILAYER_BITWISE_ALGO = {
+    .name   = "multilayer_bitwise",
+    .mask   = multilayer_bitwise_mask,
+    .unmask = multilayer_bitwise_unmask
+};

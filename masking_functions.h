@@ -24,3 +24,9 @@ extern mask_algo_t ROL_ALGO;
 bool add_mask(uint8_t *buffer, size_t size, void *ctx);
 bool sub_unmask(uint8_t *buffer, size_t size, void *ctx);
 extern mask_algo_t ADD_ALGO;
+
+// Gemini Pro Skill Generated
+// HEADER
+bool multilayer_bitwise_mask(uint8_t *buffer, size_t size, void *ctx);
+bool multilayer_bitwise_unmask(uint8_t *buffer, size_t size, void *ctx);
+extern mask_algo_t MULTILAYER_BITWISE_ALGO;

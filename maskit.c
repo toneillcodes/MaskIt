@@ -9,6 +9,7 @@ static mask_algo_t *mask_table[] = {
     &ROT_ALGO,
     &NOT_ALGO,
     &ROL_ALGO,
+    &MULTILAYER_BITWISE_ALGO
 };
 
 static size_t mask_table_count = sizeof(mask_table) / sizeof(mask_table[0]);
